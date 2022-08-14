@@ -25,14 +25,14 @@ def homePage():
     form = ContactForm()
     if form.validate_on_submit():
         try:
-            message = Contact(
+            contact = Contact(
                 fullname=form.fullname.data,
                 email=form.email.data.lower(),
                 phone=form.phone.data,
                 subject=form.subject.data,
                 message=form.message.data
             )
-            db.session.add(message)
+            db.session.add(contact)
             db.session.commit()
             msg = f"""
                 Hey {form.fullname.data},
@@ -40,17 +40,6 @@ def homePage():
                 Nous vous contacterons dans un bref délais.
             """
             flash(msg, "success")
-            send_email(
-                subject=form.subject.data.capitalize(),
-                sender=current_app.config['MAIL_SENDER'],
-                recipients=['flavienhugs@pm.me'],
-                text_body=render_template(
-                    'paths/_message.txt', to=form.email.data.lower(),
-                    message=form.message.data),
-                html_body=render_template(
-                    'paths/_message.html', to=form.email.data.lower(),
-                    message=form.message.data)
-            )
             return redirect(request.url)
         except Exception as e:
             abort(400)
