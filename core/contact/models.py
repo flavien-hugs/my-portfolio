@@ -20,4 +20,4 @@ class Contact(Updateable, db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
 
     def __repr__(self):
-        return f"Contact(id={self.id!r}, email={self.email!r})"
+        return f"Contact(id={self.id!r}, email={self.email!r}), phone={self.phone!r})"
