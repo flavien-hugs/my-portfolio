@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+
+{% block navbar %}
+
+{% endblock navbar %}
+
+{% block page_content %}
+    <div class="error-area">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="error-content">
+                        <h1>{{ error.code }}</h1>
+
+                        <h2>{{ page_title | capitalize() }}</h2>
+
+                        <p>{{ error.description | capitalize() }}</p>
+
+                        <div class="button">
+                            <a href="{{ url_for('main.homePage') }}" class="btn">
+                                Retourne à la page d'accueil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page_content %}
+
+{% block footer %}
+
+{% endblock footer %}

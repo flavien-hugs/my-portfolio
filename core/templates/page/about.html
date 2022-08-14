@@ -1,0 +1,94 @@
+{% extends "index.html" %}
+
+{% block page_content %}
+	<div class="breadcrumbs">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+	                <div class="breadcrumbs-content">
+	                    <h1 class="page-title">{{ page_title | capitalize() }}</h1>
+	                </div>
+	                <ul class="breadcrumb-nav">
+	                    <li><a href="/">Accueil</a></li>
+	                    <li>{{ page_title | capitalize() }}</li>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<section class="about-us section">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-12 col-12">
+					<div class="content-left">
+						<img src="{{  url_for('static', filename='img/computing.gif')}}" alt="#">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12 col-12">
+					<div class="content-right">
+						<h2>Conçu pour votre croissance.</h2>
+						<p>Nos services son conçu pour améliorer la croissance de votre entreprise.</p>
+						<div class="row">
+							<div class="col-lg-6 col-12">
+								<ul class="list">
+									<li><i class="lni lni-checkmark-circle"></i>Maintenance Informatique</li>
+									<li><i class="lni lni-checkmark-circle"></i>Graphique Design</li>
+									<li><i class="lni lni-checkmark-circle"></i>Développement Logiciel</li>
+								</ul>
+							</div>
+							<div class="col-lg-6 col-12">
+								<ul class="list">
+									<li><i class="lni lni-checkmark-circle"></i>Formation</li>
+									<li><i class="lni lni-checkmark-circle"></i>Coaching</li>
+									<li><i class="lni lni-checkmark-circle"></i>Achat &mp; Ventes</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{% include "paths/_feature.html" %}
+	{% include "paths/_storie.html" %}
+	{% include "paths/_partner.html" %}
+{% endblock page_content %}
+
+{% block js %}
+	{{ super() }}
+
+	<script type="text/javascript">
+		tns({
+            container: '.client-logo-carousel',
+            autoplay: true,
+            autoplayButtonOutput: false,
+            mouseDrag: true,
+            gutter: 15,
+            nav: false,
+            controls: false,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                540: {
+                    items: 2,
+                },
+                768: {
+                    items: 3,
+                },
+                992: {
+                    items: 4,
+                }
+            }
+        });
+        GLightbox({
+            'href': 'https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM',
+            'type': 'video',
+            'source': 'youtube',
+            'width': 900,
+            'autoplayVideos': true,
+        });
+	</script>
+{% endblock js %}

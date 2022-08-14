@@ -1,0 +1,49 @@
+{% if projects() | length > 0 %}
+    <section class="portfolio-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h3>Projets</h3>
+                        <h2>Nos derniers projets réalisés</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="portfolio-btn-wrapper">
+                        <button class="portfolio-btn active rounded-0" data-filter="*">Tous</button>
+                        {% for object in categories() %}
+                            <button class="portfolio-btn rounded-0" data-filter=".cat-{{ object.id }}">{{ object.name | capitalize() }}</button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row grid">
+                {% for obj in projects() if not obj.hidden %}
+                    <div class="col-lg-3 col-md-6 col-12 p-0 grid-item cat-{{ obj.category.id }}">
+                        <div class="portfolio-item-wrapper">
+                            <div class="portfolio-img">
+                                <img src="{{ url_for('admin.upload', filename=obj.image) }}" alt="{{ obj.name }}">
+                            </div>
+                            <div class="portfolio-overlay">
+                                <div class="pf-content">
+                                    <a href="#!" class="more-icon">
+                                        <i class="lni lni-arrow-right"></i>
+                                    </a>
+                                    <span class="category">{{ obj.category.name | capitalize() }}</span>
+                                    <h4>
+                                        <a href="#!">{{ obj.name | capitalize() }}</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

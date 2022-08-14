@@ -1,0 +1,69 @@
+{% if stories() | length > 0 %}
+    <section class="testimonials section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="testimonial-slider">
+                        {% for object in stories() if not object.hidden %}
+                            <div class="single-testimonial">
+                                <div class="text">
+                                    <p>{{ object.content | capitalize() | safe }}</p>
+                                </div>
+                                <div class="author">
+                                    <img src="{{ url_for('admin.upload', filename=object.image) }}" alt="{{ object.fullname }}">
+                                    <h4 class="name">
+                                        {{ object.fullname | capitalize() }}
+                                        <span class="deg">{{ object.status | capitalize() }}</span>
+                                    </h4>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<section class="services section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h3>Services</h3>
+                    <h2>Ce que nous faisons</h2>
+                    <p>There are many variations of passages of Lorem
+                        Ipsum available, but the majority have suffered alteration in some form.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="single-service">
+                    <i class="lni lni-inbox"></i>
+                    <h3><a href="#">Unlimited Inboxes</a></h3>
+                    <p>Quickly provide access to cross-platform channels without transparent manufactured products.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="single-service">
+                    <i class="lni lni-trash"></i>
+                    <h3><a href="#">Spam Report</a></h3>
+                    <p>Quickly provide access to cross-platform channels without transparent manufactured products.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="single-service">
+                    <i class="lni lni-pencil-alt"></i>
+                    <h3><a href="#">Compose in Markdown</a></h3>
+                    <p>Quickly provide access to cross-platform channels without transparent manufactured products.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

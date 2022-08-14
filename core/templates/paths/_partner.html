@@ -1,0 +1,15 @@
+{% if partners() %}
+    <div class="client-logo-section">
+        <div class="container">
+            <div class="client-logo-wrapper">
+                <div class="client-logo-carousel d-flex align-items-center justify-content-between">
+                    {%- for object in partners() if not object.hidden %}
+                        <div class="client-logo">
+                            <img src="{{ url_for('admin.upload', filename=object.image) }}" alt="{{ object.name }}">
+                        </div>
+                    {%- endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

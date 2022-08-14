@@ -1,0 +1,173 @@
+<section class="section-header bg-tertiary pb-5 pb-lg-7">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-lg-6">
+                <h1 class="display-1 font-weight-extreme mb-4">Parlons-en</span></h1>
+                <p class="lead mb-1"><i class="fas fa-map-marker-alt mr-3"></i>Bouaké, Côte d'Ivoire</p>
+                <p class="lead mb-4"><i class="fas fa-phone mr-2"></i>{{ config.PHONE_NUMBER }}</p>
+                <p class="lead">
+                    Prenons un rendez-vous autour d'un café pour discuter de votre projet de logiciel.
+                </p>
+            </div>
+            <div class="col-12 col-md-5 d-none d-lg-block text-center">
+                <img src="{{ url_for('static', filename='img/illustration/agency.svg') }}" class="w-75" alt="">
+            </div>
+        </div>
+    </div>
+
+    <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2"><svg class="fill-soft" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 43.4" style="enable-background:new 0 0 1920 43.4;" xml:space="preserve">
+        <path d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"></path>
+    </svg></figure>
+</section>
+
+<div class="section section-md bg-light text-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="text-center px-0 px-lg-5">
+                    <h2 class="mb-4 h4">Vous avez un projet ? vous avez des questions ?
+                    Veuillez laisser un courriel et je vous répondrai dès que possible.</h2>
+                    <p class="lead text-muted mb-5 mb-lg-6">
+                        Je peux vous aider ! Veuillez remplir le formulaire ci-dessous en donnant le plus de détails possible.
+                        Vous pouvez également m'envoyer un e-mail à tout moment si vous souhaitez en parler davantage.
+                        <a href="#!">{{ config.EMAIL_ADDRESS }}</a>
+                    </p>
+                </div>
+                <form method="post" action=".">
+                    {{ form.hidden_tag() }}
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="{{ form.fullname.id }}">
+                                    {{ form.fullname.label.text }}
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                {% if form.fullname.errors %}
+                                    {{ form.fullname(class="form-label text-muted shadow-none", placeholder=form.fullname.label.text) }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.fullname.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-user-alt"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.fullname(class="form-control shadow-none", placeholder=form.fullname.label.text) }}
+                                    </div>    
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="{{ form.email.id }}">
+                                    {{ form.email.label.text }}
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-label text-muted shadow-none", placeholder=form.email.label.text) }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-user-alt"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.email(class="form-control shadow-none", placeholder=form.email.label.text) }}
+                                    </div>    
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="{{ form.phone.id }}">
+                                    {{ form.phone.label.text }}
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                {% if form.phone.errors %}
+                                    {{ form.phone(class="form-label text-muted shadow-none", placeholder=form.phone.label.text) }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.phone.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-phone-square-alt"></i>
+                                            </span>
+                                        </div>
+                                        {{ form.phone(class="form-control shadow-none", placeholder=form.phone.label.text) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-12">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="{{ form.subject.id }}">
+                                    {{ form.subject.label.text }}
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                {% if form.subject.errors %}
+                                    {{ form.subject(class="form-label text-muted shadow-none", placeholder=form.subject.label.text) }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.subject.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="mb-3">
+                                        {{ form.subject(class="form-control shadow-none", placeholder=form.subject.label.text) }}
+                                    </div>    
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                        <div class="col-12 col-12 mt-lg-4">
+                            <div class="form-group">
+                                <label class="form-label text-muted" for="{{ form.message.id }}">
+                                    Comment puis-je vous aider ?<span class="text-danger">*</span>
+                                </label>
+
+                                {% if form.message.errors %}
+                                    {{ form.message(class="shadow-none", style="height:150px", placeholder=form.message.label.text) }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.message.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.message(class="form-control shadow-none", rows="8", placeholder="Bonjour Flavien HUGS, Je voudrais ...") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="text-lg-center mb-2">
+                                <button type="submit" class="btn btn-primary animate-up-2 mt-4">
+                                    <span class="mr-2"><i class="fas fa-paper-plane"></i></span>
+                                    Envoyer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
