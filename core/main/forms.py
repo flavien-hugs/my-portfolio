@@ -6,6 +6,7 @@ from wtforms import StringField, SelectField, TextAreaField, SubmitField
 from .models import Category, Project
 from flask_ckeditor import CKEditorField
 
+
 class ProjectForm(FlaskForm):
     category = SelectField('Category', coerce=int)
     name = StringField(
