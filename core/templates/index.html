@@ -48,7 +48,7 @@
             </div>
 
             {% block page_content %}
-                <section id="qui-suis-je" class="section-header bg-tertiary pb-5 pb-lg-7">
+                <section id="qui-suis-je" class="section-header bg-tertiary pb-4 pb-lg-6">
                     <div class="container">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-12 col-lg-7">
@@ -76,7 +76,7 @@
                         <path d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"></path></svg>
                     </figure>
                 </section>
-
+                {% include "paths/_project.html" %}
                 {% include "paths/_skill.html" %}
                 {% include "paths/_contact.html" %}
             {% endblock page_content %}
