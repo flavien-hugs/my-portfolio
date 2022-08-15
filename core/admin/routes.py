@@ -203,7 +203,7 @@ def logoutPage():
     return redirect(url_for('main.homePage'))
 
 
-@admin.route('/edit/project/', methods=['GET', 'POST'], strict_slashes=False)
+@admin.route('/add/project/', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 @admin_required
 def addProjectPage():
@@ -260,22 +260,22 @@ def addStoriePage():
     )
 
 
-@admin.route('/add/partner/', methods=['GET', 'POST'], strict_slashes=False)
+@admin.route('/add/client/', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
 @admin_required
-def addPartnerPage():
-    page_title = 'Ajouter un partenaire'
-    form = PartnerForm()
+def addClientPage():
+    page_title = 'Ajouter un client'
+    form = ClientForm()
     if (current_user.can(Permission.ADMIN) and form.validate_on_submit()):
         try:
-            partner = Partner(
+            client = Client(
                 name=form.name.data,
                 image=save_picture(form.image.data),
                 user=current_user._get_current_object()
             )
-            db.session.add(partner)
+            db.session.add(client)
             db.session.commit()
-            flash("Partenaire ajouté avec succès !", 'success')
+            flash("Client ajouté avec succès !", 'success')
             return redirect(request.url)
         except Exception as e:
             return f"Une erreur s'est produite: {e}"
