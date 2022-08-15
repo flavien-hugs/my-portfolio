@@ -47,7 +47,7 @@
                                 <div class="card mb-4">
                                     <div class="p-4">
                                         <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
-                                            {{ partners() | length }}
+                                            0
                                         </h2>
                                         <span class="fs-6 text-uppercase fw-semi-bold">
                                             partenaires
@@ -60,7 +60,7 @@
                                 <div class="card mb-4">
                                     <div class="p-4">
                                         <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
-                                            {{ projects() | length }}
+                                            0
                                         </h2>
                                         <span class="fs-6 text-uppercase fw-semi-bold">
                                             Projets
@@ -73,7 +73,7 @@
                                 <div class="card mb-4">
                                     <div class="p-4">
                                         <h2 class="mt-4 fw-bold mb-1 d-flex align-items-center h1 lh-1">
-                                            {{ stories() | length }}
+                                            0
                                         </h2>
                                         <span class="fs-6 text-uppercase fw-semi-bold">
                                             Témoignages
@@ -83,89 +83,7 @@
                             </div>
                         </div>
 
-                        {% if project(projects()) | length > 1 %}
-                            <div class="card mb-4">
-                                <div class="card-header d-flex justify-content-between border-bottom-0">
-                                    <h3 class="mb-0">Vos projets</h3>
-                                    <a href="#" class="text-uppercase fw-bold">
-                                        voir plus <i class="fe fe-chevron-right ms-2"></i>
-                                    </a>
-                                </div>
-
-                                <div class="table-responsive border-0">
-                                    <table class="table mb-0">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th class="border-0">Nom</th>
-                                                <th class="border-0">Catégorie</th>
-                                                <th class="border-0">publication</th>
-                                                <th class="border-0"></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            {{ project(projects()) }}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {% if storie(stories()) | length > 1 %}
-                            <div class="card mb-4">
-                                <div class="card-header d-flex justify-content-between border-bottom-0">
-                                    <h3 class="mb-0">Retour d'expériences</h3>
-                                    <a href="#" class="text-uppercase fw-bold">
-                                        voir plus <i class="fe fe-chevron-right ms-2"></i>
-                                    </a>
-                                </div>
-
-                                <div class="table-responsive border-0">
-                                    <table class="table mb-0">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th class="border-0">Nom &amp; prénoms</th>
-                                                <th class="border-0">Status</th>
-                                                <th class="border-0">Message</th>
-                                                <th class="border-0">publication</th>
-                                                <th class="border-0"></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            {{ storie(stories()) }}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {% if partner(partners()) | length > 1 %}
-                            <div class="card mb-4">
-                                <div class="card-header d-flex justify-content-between border-bottom-0">
-                                    <h3 class="mb-0">Partenaires</h3>
-                                    <a href="#" class="text-uppercase fw-bold">
-                                        voir plus <i class="fe fe-chevron-right ms-2"></i>
-                                    </a>
-                                </div>
-
-                                <div class="table-responsive border-0">
-                                    <table class="table mb-0">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th class="border-0">Nom</th>
-                                                <th class="border-0">publication</th>
-                                                <th class="border-0"></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            {{ partner(partners()) }}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        {% endif %}
+                        
                     {% endblock dashboard_content %}
                 </div>
             </div>
