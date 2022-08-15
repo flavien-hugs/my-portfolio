@@ -3,9 +3,11 @@ Main page routes.
 """
 
 import os
+from urllib.parse import urlparse
+
 from flask import(
     render_template, url_for, abort, flash, redirect,
-    request, current_app, send_from_directory, Response
+    request, current_app, make_response, send_from_directory, Response
 )
 
 
@@ -79,8 +81,8 @@ def sitemap():
     static_urls = list()
     for rule in current_app.url_map.iter_rules():
         if(
-            not str(rule).startswith("/contact/")
-            and not str(rule).startswith("/errors/")
+            not str(rule).startswith("/21fh08/"),
+            not str(rule).startswith("/errors/")
         ):
             if "GET" in rule.methods and len(rule.arguments) == 0:
                 url = {
@@ -90,20 +92,10 @@ def sitemap():
                 }
                 static_urls.append(url)
 
-    dynamic_urls = list()
-    blog_posts = Post.query.order_by(Post.date_posted.desc()).all()
-    for post in blog_posts:
-        url = {
-            "loc": f"{host_base}/article/{post.slug}",
-            "lastmod": post.date_posted.strftime("%Y-%m-%d"),
-            "changefreq": "weekly",
-            "priority": "0.7"
-        }
-        dynamic_urls.append(url)
-
     xml_sitemap = render_template(
-        "sitemap.xml", static_urls=static_urls,
-        dynamic_urls=dynamic_urls, host_base=host_base
+        "sitemap.xml",
+        static_urls=static_urls,
+        host_base=host_base
     )
     response = make_response(xml_sitemap)
     response.headers["Content-Type"] = "application/xml"
@@ -115,11 +107,7 @@ def sitemap():
 def noindex():
     Disallow = lambda string: f'Disallow: {string}'
     r = Response(
-        "User-Agent: *\n{0}\n".format("\n".join(
-            [
-                Disallow('/contact/'),
-                Disallow('/admin/')
-            ])),
+        "User-Agent: *\n{0}\n".format("\n".join([Disallow('/21fh08/')])),
             status=200, mimetype="text/plain"
         )
     r.headers["Content-Type"] = "text/plain; charset=utf-8"
