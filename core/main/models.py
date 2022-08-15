@@ -9,9 +9,10 @@ from ..utils import Updateable
 
 class Categories:
     DESIGN = 0x01
-    FORMATION = 0x02
-    REPARATION = 0x04
-    DEVELOPPEMENT = 0x06
+    DEV_WEB = 0x02
+    FORMATION = 0x03
+    DEV_MOBILE = 0x04
+    DEV_LOGICIEL = 0x05
 
 
 class Category(db.Model):
@@ -51,11 +52,12 @@ class Category(db.Model):
     def insert_category():
         categories = {
             'Création graphique': [Categories.DESIGN],
+            'Développement Web': [Categories.DEV_WEB],
             'Coaching & Formation': [Categories.FORMATION],
-            'Maintenace Informatique': [Categories.REPARATION],
-            'Développement Web, Mobile et Logiciel': [Categories.DEVELOPPEMENT]
+            'Développement Mobile': [Categories.DEV_MOBILE],
+            'Développement Logiciel': [Categories.DEV_MOBILE]
         }
-        default_category = 'Création graphique'
+        default_category = 'Développement Web'
         for c in categories:
             cat = Category.query.filter_by(name=c).first()
             if cat is None:
