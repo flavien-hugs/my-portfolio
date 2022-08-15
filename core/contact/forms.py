@@ -2,7 +2,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, SelectField
-from wtforms.validators import InputRequired, DataRequired, Length, Email
+from wtforms.validators import InputRequired, DataRequired, Length, Email, Regexp
 
 from .models import Contact
 
@@ -16,7 +16,11 @@ SUBJECT_CHOICE = [
 
 class ContactForm(FlaskForm):
     fullname = StringField(
-        "Nom & prénoms", validators=[Length(min=4, max=80), InputRequired(), DataRequired()]
+        "Nom & prénoms",
+        validators=[
+            Length(min=4, max=80), InputRequired(), DataRequired(),
+            Regexp('^[A-Za-z]*$', 0, "Le nom ne doivent comporter que des lettres.")
+        ]
     )
     email = StringField(
         'Adresse Email',
@@ -28,7 +32,8 @@ class ContactForm(FlaskForm):
     phone = StringField(
         "Téléphone",
         validators=[
-            Length(min=4, max=15), InputRequired(), DataRequired()
+            Length(min=4, max=15), InputRequired(), DataRequired(),
+            Regexp('^[0-9]*$', 0, "Le Téléphone ne doivent comporter que des chiffres.")
         ]
     )
     subject = SelectField(
