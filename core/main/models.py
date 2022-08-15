@@ -114,7 +114,7 @@ class Storie(Updateable, db.Model):
 
 
 class Client(Updateable, db.Model):
-    """Partner model"""
+    """Client model"""
 
     __tablename__ = 'partner'
     id = db.Column(db.Integer, primary_key=True)
