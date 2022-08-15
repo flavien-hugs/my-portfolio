@@ -11,6 +11,9 @@
                         <a href="#!">{{ config.EMAIL_ADDRESS }}</a>
                     </p>
                 </div>
+
+                {% include "paths/_alert.html" %}
+                
                 <form method="post" action=".">
                     {{ form.hidden_tag() }}
                     <div class="row">

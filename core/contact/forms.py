@@ -18,8 +18,8 @@ class ContactForm(FlaskForm):
     fullname = StringField(
         "Nom & prénoms",
         validators=[
-            Length(min=4, max=80), InputRequired(), DataRequired(),
-            Regexp('^[A-Za-z]*$', 0, "Le nom ne doivent comporter que des lettres.")
+            Length(min=4, max=80), InputRequired(),
+            DataRequired(),
         ]
     )
     email = StringField(
@@ -33,7 +33,6 @@ class ContactForm(FlaskForm):
         "Téléphone",
         validators=[
             Length(min=4, max=15), InputRequired(), DataRequired(),
-            Regexp('^[0-9]*$', 0, "Le Téléphone ne doivent comporter que des chiffres.")
         ]
     )
     subject = SelectField(
