@@ -18,6 +18,7 @@ pyjwt = "*"
 pillow = "*"
 flask-ckeditor = "*"
 requests = "*"
+gunicorn = "*"
 
 [dev-packages]
 
