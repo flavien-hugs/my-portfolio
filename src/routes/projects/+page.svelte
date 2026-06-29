@@ -61,17 +61,20 @@
 	const hasMore = $derived(visibleCount < ordered.length);
 	const remaining = $derived(ordered.length - visibleCount);
 
-	// Reset pagination when filter or sort mode changes.
-	$effect(() => {
-		selectedTech;
-		sortMode;
-		visibleCount = PAGE_SIZE;
-	});
-
 	// Randomize on the client after hydration to keep SSR markup deterministic.
 	onMount(() => {
 		randomSeed = Math.floor(Math.random() * 1_000_000) + 1;
 	});
+
+	function selectTech(tech: string) {
+		selectedTech = tech;
+		visibleCount = PAGE_SIZE;
+	}
+
+	function setSort(mode: SortMode) {
+		sortMode = mode;
+		visibleCount = PAGE_SIZE;
+	}
 
 	function pickRandom() {
 		sortMode = 'random';
@@ -123,14 +126,14 @@
 		<div class="flex flex-wrap gap-2 border-b border-zinc-800 py-5">
 			<button
 				class="{pillBase} {selectedTech === 'All' ? pillOn : pillOff}"
-				onclick={() => (selectedTech = 'All')}
+				onclick={() => selectTech('All')}
 			>
 				{lang.t('All', 'Tous')}
 			</button>
 			{#each allTech as tech (tech)}
 				<button
 					class="{pillBase} {selectedTech === tech ? pillOn : pillOff}"
-					onclick={() => (selectedTech = tech)}
+					onclick={() => selectTech(tech)}
 				>
 					{tech}
 				</button>
@@ -165,13 +168,13 @@
 				</button>
 				<button
 					class="{pillBase} {sortMode === 'asc' ? pillOn : pillOff}"
-					onclick={() => (sortMode = 'asc')}
+					onclick={() => setSort('asc')}
 				>
 					A–Z
 				</button>
 				<button
 					class="{pillBase} {sortMode === 'desc' ? pillOn : pillOff}"
-					onclick={() => (sortMode = 'desc')}
+					onclick={() => setSort('desc')}
 				>
 					Z–A
 				</button>
