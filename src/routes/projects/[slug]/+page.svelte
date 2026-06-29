@@ -63,6 +63,48 @@
 				{/if}
 			</div>
 
+			{#if project.demos && project.demos.length > 0}
+				<div class="mt-12 border-t border-zinc-900 pt-10">
+					<h2 class="mb-6 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase">
+						{lang.t('Live environments', 'Environnements de démo')}
+					</h2>
+					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{#each project.demos as env (env.url)}
+							<Card>
+								<div class="flex items-start justify-between gap-3">
+									<h3 class="text-sm font-semibold text-white">
+										{lang.t(env.label.en, env.label.fr)}
+									</h3>
+									<a
+										href={env.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="shrink-0 font-mono text-[10px] tracking-[0.3em] text-zinc-400 uppercase transition hover:text-white"
+									>
+										{lang.t('Open', 'Ouvrir')} ↗
+									</a>
+								</div>
+								<p class="mt-1 truncate font-mono text-xs text-zinc-600">
+									{env.url.replace('https://', '')}
+								</p>
+								{#if env.credentials}
+									<dl class="mt-4 space-y-1.5 border-t border-zinc-900 pt-4 text-xs">
+										<div class="flex justify-between gap-3">
+											<dt class="text-zinc-600">{lang.t('Login', 'Identifiant')}</dt>
+											<dd class="font-mono text-zinc-300 select-all">{env.credentials.username}</dd>
+										</div>
+										<div class="flex justify-between gap-3">
+											<dt class="text-zinc-600">{lang.t('Password', 'Mot de passe')}</dt>
+											<dd class="font-mono text-zinc-300 select-all">{env.credentials.password}</dd>
+										</div>
+									</dl>
+								{/if}
+							</Card>
+						{/each}
+					</div>
+				</div>
+			{/if}
+
 			<div class="mt-12 grid gap-6 md:grid-cols-2">
 				<Card>
 					<h2 class="mb-4 font-mono text-[10px] tracking-[0.4em] text-zinc-600 uppercase">

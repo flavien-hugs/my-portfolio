@@ -12,8 +12,8 @@
 			</h3>
 			<p class="mt-6 leading-relaxed font-light text-zinc-500">
 				{lang.t(
-					"Engineering isn't just about making it work. It's about making it industrial-grade, secure, and maintainable for the humans who follow.",
-					"L'ingénierie ne consiste pas seulement à faire fonctionner les choses. Il s'agit de les rendre de qualité industrielle, sécurisées et maintenables pour les humains qui suivent."
+					'Engineering is more than just making solutions work. It is the art of building world-class systems: robust by nature, secure by design, and maintainable by conviction.',
+					"L'ingénierie dépasse la simple mise en œuvre technique. C’est l’art de bâtir des systèmes de classe mondiale: robustes par nature, sécurisés par design et maintenables par conviction."
 				)}
 			</p>
 		</div>
