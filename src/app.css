@@ -31,6 +31,36 @@ html {
 	scroll-behavior: smooth;
 }
 
+/*
+ * Light theme. The UI is built dark-first with hardcoded zinc/white utilities.
+ * In Tailwind v4 those compile to var(--color-*), so inverting the zinc scale
+ * (n <-> 950-n) plus black/white under html.light flips the whole site cleanly
+ * without touching components. Accent colors are left untouched on purpose.
+ */
+html.light {
+	--color-white: #18181b;
+	--color-black: #ffffff;
+	--color-zinc-50: #09090b;
+	--color-zinc-100: #18181b;
+	--color-zinc-200: #27272a;
+	--color-zinc-300: #3f3f46;
+	--color-zinc-400: #52525b;
+	--color-zinc-500: #71717a;
+	--color-zinc-600: #a1a1aa;
+	--color-zinc-700: #d4d4d8;
+	--color-zinc-800: #e4e4e7;
+	--color-zinc-900: #f4f4f5;
+	--color-zinc-950: #fafafa;
+	color-scheme: light;
+}
+
+html,
+body {
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
 @media print {
 	body {
 		background: white !important;
